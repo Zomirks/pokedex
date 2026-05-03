@@ -1,0 +1,198 @@
+:root {
+	--bg-page: #fafafa;
+	--bg-card: #fefefe;
+	--text-main: #1a1a1a;
+	--text-muted: #6b7280;
+	--border: #e5e7eb;
+	--shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+	--sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+	--heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+	--mono: ui-monospace, Consolas, monospace;
+
+	font: 18px/145% var(--sans);
+	letter-spacing: 0.18px;
+	color-scheme: light dark;
+	color: var(--text-main);
+	background: var(--bg-page);
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	@media (max-width: 1024px) {
+		font-size: 16px;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-page: #0f0f10;
+		--bg-card: #1c1c1e;
+		--text-main: #f0f0f0;
+		--text-muted: #9ca3af;
+		--border: #2c2c2e;
+		--shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	}
+}
+
+* { box-sizing: border-box; }
+
+body {
+  	margin: 0;
+	background: var(--bg-page);
+	color: var(--text-main);
+	padding: 2rem 1rem;
+}
+
+h1,
+h2 {
+	font-family: var(--heading);
+	font-weight: 500;
+	color: var(--text-main);
+}
+
+h1 {
+	font-size: 56px;
+	letter-spacing: -1.68px;
+	margin: 32px 0;
+	@media (max-width: 1024px) {
+		font-size: 36px;
+		margin: 20px 0;
+	}
+}
+
+h2 {
+	font-size: 24px;
+	line-height: 118%;
+	letter-spacing: -0.24px;
+	margin: 0 0 8px;
+	@media (max-width: 1024px) {
+		font-size: 20px;
+	}
+}
+
+p {
+  	margin: 0;
+}
+
+.card {
+	background: var(--bg-card);
+	border: 6px solid var(--border);
+	border-radius: 1rem;
+	position: relative;
+	text-align: center;
+	transition: transform .15s ease-out, box-shadow .15s;;
+	display: flex;
+	flex-direction: column;
+	aspect-ratio: 3 / 4;
+}
+
+.card:hover {
+	transform: translateY(-2px);
+  	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover::before {
+	opacity: .35;
+}
+
+.card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	aspect-ratio: 1 / 1;
+	background-image: url('/pokeball.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 60%;
+	opacity: .12;
+	transform: rotate(-20deg);
+	pointer-events: none;
+	transition: opacity 250ms ease-in-out;
+}
+
+.card img {
+	width: 100%;
+	object-fit: contain;
+	position: relative;
+	z-index: 1;
+	flex: 1;
+	min-height: 0;
+}
+
+.card .card-text {
+	flex-shrink: 0;
+	margin-bottom: 1rem;
+}
+
+.card .name {
+	font-weight: 600;
+	margin: .25rem 0;
+}
+
+.card .number {
+	font-family: var(--mono);
+	font-size: .9rem;
+	font-weight: 600;
+	color: var(--text-main);
+	letter-spacing: 0.05em;
+	position: absolute;
+	top: .5rem;
+	right: .5rem;
+	background: var(--bg-page);
+	padding: .15rem .4rem;
+	border-radius: .25rem;
+	font-size: .75rem;
+	z-index: 1;
+}
+  
+.generation h2 {
+	position: sticky;
+	top: 0;
+	background: var(--bg-page);
+	padding: .75rem 0;
+	z-index: 10;
+}
+  
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 1rem;
+}
+
+.types {
+	display: flex;
+	justify-content: center;
+	gap: .25rem;
+}
+
+.type-badge {
+	border: 1px solid var(--border);
+	border-radius: .5rem;
+	padding: .15rem .5rem;
+	font-size: 12px;
+	color: white;
+	text-transform: capitalize;
+}
+
+.type-bug      { background: #A6B91A; }
+.type-dark     { background: #705746; }
+.type-dragon   { background: #6F35FC; }
+.type-electric { background: #F7D02C; color: #333; }
+.type-fairy    { background: #D685AD; }
+.type-fighting { background: #C22E28; }
+.type-fire     { background: #EE8130; }
+.type-flying   { background: #A98FF3; }
+.type-ghost    { background: #735797; }
+.type-grass    { background: #7AC74C; }
+.type-ground   { background: #E2BF65; color: #333; }
+.type-ice      { background: #96D9D6; color: #333; }
+.type-normal   { background: #A8A77A; }
+.type-poison   { background: #A33EA1; }
+.type-psychic  { background: #FB5CA7; }
+.type-rock     { background: #B6A136; }
+.type-steel    { background: #B7B7CE; color: #333; }
+.type-water    { background: #6390F0; }
